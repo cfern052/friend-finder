@@ -8,8 +8,11 @@ var PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+require('./app/routing/api-routes.js')(app); 
+require('./app/routing/html-routes.js')(app);
+
 app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "home.html"));
+    res.sendFile(path.join(__dirname, "./app/public/home.html"));
   });
 
 app.listen(PORT, function(){
